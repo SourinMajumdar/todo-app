@@ -1,0 +1,113 @@
+body, #root {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+/* Layout */
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background: #f4f6f8;
+  padding-top: 10rem; 
+}
+.card {
+  background: rgb(243, 243, 243);
+  padding: 35px 40px;   /* more breathing room */
+  border-radius: 20px;
+  width: 420px;         /* bigger card */
+  box-shadow: 0 20px 20px 20px rgba(67, 67, 67, 0.12);
+}
+
+h1 {
+  font-size: 40px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.todo-item span {
+  font-size: 18px;
+}
+
+/* Input row */
+.input-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+.input-row input {
+  padding: 12px;
+  font-size: 16px;
+}
+
+.input-row input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.input-row button {
+  padding: 12px 18px;
+  font-size: 16px;
+  border: none;
+  border-radius: 6px;
+  background: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.input-row button:hover {
+  background: #0056b3;
+}
+
+/* Todo list */
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.todo-item + .todo-item {
+  margin-top: 6px;
+}
+
+.todo-item:hover {
+  background: #f0f0f0;
+}
+
+.todo-item span {
+  flex: 1;
+}
+
+/* Completed todo */
+.todo-item.completed span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* Delete button */
+.delete-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
