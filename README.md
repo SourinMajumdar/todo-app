@@ -1,16 +1,64 @@
-# React + Vite
+# Todo App ✅
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and beginner-friendly **Todo Application built with React** to practice core React fundamentals like state management, list rendering, conditional styling, and data persistence using `localStorage`.
 
-Currently, two official plugins are available:
+This project focuses on **strong basics and clean logic** rather than complex features.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+### 🚀 Features
+- Add new todos
+- Mark todos as completed
+- Delete todos
+- Persist todos using browser `localStorage`
+- Clean and minimal UI
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+### 🛠 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React (Vite)
+- JavaScript (ES6)
+- CSS
+- Browser Web APIs (localStorage)
+---
+
+
+### 📂 Project Structure
+
+todo-app/  
+├── src/  
+│ ├── App.jsx  
+│ ├── App.css  
+│ └── main.jsx  
+├── index.html  
+├── package.json  
+└── README.md  
+
+
+---
+
+
+#### 🧠 What I Learned
+
+- Using useState to manage arrays and objects
+
+- Rendering lists dynamically using .map()
+
+- Handling controlled inputs in React
+
+- Conditional styling based on state
+
+- Using useEffect for side effects
+
+- Persisting data with localStorage
+
+#### 🔮 Future Improvements
+
+- Dark mode
+
+- Todo filters (All / Active / Completed)
+
+- Component refactoring (TodoItem)
+
+- Better accessibility and UI polish
