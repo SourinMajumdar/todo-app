@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 const backgrounds = [
-    "src/assets/img1.jpg", "src/assets/img2.jpg",
-    "src/assets/img3.jpg", "src/assets/img4.jpg",
-    "src/assets/img5.jpg", "src/assets/img6.jpg",
+    "public/img1.jpg", "public/img2.jpg",
+    "public/img3.jpg", "public/img4.jpg",
+    "public/img5.jpg", "public/img6.jpg",
 ];
 
 
