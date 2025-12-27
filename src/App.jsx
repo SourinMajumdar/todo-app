@@ -1,11 +1,25 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 
+const backgrounds = [
+    "src/assets/img1.jpg", "src/assets/img2.jpg",
+    "src/assets/img3.jpg", "src/assets/img4.jpg",
+    "src/assets/img5.jpg", "src/assets/img6.jpg",
+];
+
+
 function App() {
   const [todos, setTodos] = useState(() => {
     const savedTodos = localStorage.getItem("todos");
     return savedTodos ? JSON.parse(savedTodos) : [];
   });
+
+  const [bgImage, setBgImage] = useState("");
+  useEffect(() => {
+    const randomIndex = Math.floor(Math.random() * backgrounds.length);
+    setBgImage(backgrounds[randomIndex]);
+  }, []);
+
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -33,18 +47,26 @@ function App() {
 
 
   return (
-    <div className="container">
+    
+    <div className="container" style={{
+        backgroundImage: `
+          linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+          url(${bgImage})
+        `,
+      }}>
+      
       <div className="card">
-        <h1>Todo App</h1>
+        <p className="prompt">What’s on your mind today?</p>
 
         <div className="input-row">
           <input
             type="text"
-            placeholder="Enter a task"
+            placeholder="Enter a new task"
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
-          <button onClick={addTodo}>Add</button>
+
+          <button onClick={addTodo}>+ Add</button>
         </div>
 
         <ul className="todo-list">
@@ -53,17 +75,21 @@ function App() {
               key={index}
               className={`todo-item ${todo.completed ? "completed" : ""}`}
             >
-              <input
-                type="checkbox"
-                checked={todo.completed}
-                onChange={() => {
-                  const updatedTodos = [...todos];
-                  updatedTodos[index].completed = !updatedTodos[index].completed;
-                  setTodos(updatedTodos);
-                }}
-              />
+              <label className="todo-checkbox">
+                <input
+                  type="checkbox"
+                  checked={todo.completed}
+                  onChange={() => {
+                    const updatedTodos = [...todos];
+                    updatedTodos[index].completed = !updatedTodos[index].completed;
+                    setTodos(updatedTodos);
+                  }}
+                />
 
-              <span>{todo.text}</span>
+                <span className="checkmark"></span>
+              </label>
+
+              <span className="todo-text">{todo.text}</span>
 
               <button
                 className="delete-btn"
