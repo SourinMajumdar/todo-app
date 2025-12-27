@@ -226,7 +226,7 @@ body, #root {
   font-weight: 600;
   margin-top: 40px;
   margin-bottom: 20px;
-  font-size: 1.5rem;
+  font-size: 18px;
   text-align: center;
   color: rgba(255, 255, 255, 0.6);
   user-select: none;
@@ -245,6 +245,42 @@ body, #root {
 
 .my-name:hover {
   text-decoration-color: aquamarine;
+  color: #ffffff;
+}
+
+/* // ===== FILTER BUTTONS ===== // */
+.filters {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  padding-bottom: 50px;
+
+  /** 👇 load effect */
+  opacity: 0;
+  transform: translateX(-15px);
+  animation: filtersSlideIn 0.5s ease forwards;
+  animation-delay: 0.5s; /* after input */
+}
+
+.filters button {
+  padding: 6px 14px;
+  font-size: 13px;
+  border-radius: 20px;
+  border: none;
+
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.filters button:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.filters button.active {
+  background: #1b89ff;
   color: #ffffff;
 }
 
@@ -283,6 +319,13 @@ body, #root {
   }
 }
 
+@keyframes filtersSlideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
   .container {
@@ -304,8 +347,7 @@ body, #root {
     gap: 10px;
   }
 
-  .input-row input,
-  .input-row button {
+  .input-row input, .input-row button {
     width: 100%;
   }
 }
