@@ -271,3 +271,38 @@ body,
     opacity: 1;
   }
 }
+
+/* ===== MOBILE RESPONSIVENESS ===== */
+@media (max-width: 768px) {
+  .container {
+    padding-top: 100px;   /* less vertical waste */
+    padding-bottom: 80px;
+  }
+
+  .card {
+    width: 90%;           /* responsive card */
+    padding: 24px 20px;
+  }
+
+  .prompt {
+    font-size: 32px;      /* readable, not huge */
+  }
+
+  .input-row {
+    flex-direction: column; /* stack input + button */
+    gap: 10px;
+  }
+
+  .input-row input {
+    width: 100%;          /* full width on mobile */
+  }
+
+  .input-row button {
+    width: 100%;
+  }
+
+  .footer {
+    font-size: 12px;      /* slightly smaller */
+    margin-top: 24px;
+  }
+}
