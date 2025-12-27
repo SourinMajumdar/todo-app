@@ -1,29 +1,24 @@
-/* ===== RESET ===== */
-
-body,
-#root {
+body, #root {
   margin: 0;
   padding: 0;
-  background-attachment: fixed; /* 🔒 stays fixed */
 }
 
 * {
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* ===== LAYOUT ===== */
-
 .container {
-  min-height: 100vh;
-  overflow-y: auto;
+  height: 100vh;              /* background never expands */
+  overflow-y: auto;           /* ONLY scroll area */
 
   display: flex;
-  flex-direction: column;        /* 👈 important */
+  flex-direction: column;
   align-items: center;
 
   padding-top: 200px;
-  padding-bottom: 40px;
+  padding-bottom: 200px;
 
   background-size: cover;
   background-position: center;
@@ -33,18 +28,16 @@ body,
 .prompt {
   text-align: center;
   font-size: 50px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.9);
   margin-bottom: 20px;
 
-  /* animation */
+  /* load animation */
   opacity: 0;
   transform: translateY(12px);
   animation: promptFadeIn 0.8s ease forwards;
   animation-delay: 0.2s;
 }
-
 
 /* ===== CARD ===== */
 .card {
@@ -74,11 +67,10 @@ body,
   margin-top: 8%;
   margin-bottom: 10%;
 
-  /* 👇 load animation */
   opacity: 0;
   transform: translateY(10px);
   animation: inputFadeIn 0.8s ease forwards;
-  animation-delay: 0.4s; /* comes after prompt */
+  animation-delay: 0.4s;
 }
 
 .input-row input {
@@ -115,10 +107,9 @@ body,
   color: #ffffff;
   cursor: pointer;
 
-  /* animation */
+  opacity: 0;
   animation: buttonPopIn 0.6s ease forwards;
   animation-delay: 0.55s;
-  opacity: 0;
 }
 
 .input-row button:hover {
@@ -140,13 +131,18 @@ body,
 
   padding: 10px 12px;
   border-radius: 10px;
+
+  /* 👇 load animation */
+  opacity: 0;
+  transform: translatex(-30px);
+  animation: todoFadeIn 0.9s ease forwards;
 }
 
 .todo-item + .todo-item {
   margin-top: 6px;
 }
 
-/* ===== CHECKBOX (PROFESSIONAL) ===== */
+/* ===== CHECKBOX ===== */
 .todo-checkbox {
   display: flex;
   align-items: center;
@@ -201,15 +197,11 @@ body,
   margin-left: 10px;
   font-size: 20px;
   color: #ffffff;
-
-  transition: font-size 0.15s ease;
 }
-
 .todo-text:hover {
-  font-size: 18px;
+  text-shadow: 0px 0px 30px #ffcfcf;
 }
 
-/* completed */
 .todo-item.completed .todo-text {
   text-decoration: line-through;
   opacity: 0.6;
@@ -221,31 +213,34 @@ body,
   border: none;
 
   font-size: 16px;
-  color: rgba(249, 234, 234, 0.6);
+  color: rgba(255, 255, 255, 0.6);
   cursor: pointer;
-
-  transition: text-shadow 0.15s ease;
 }
 
 .delete-btn:hover {
   text-shadow: 0 0 6px rgba(229, 15, 18, 0.8);
 }
 
-/* Footer */
+/* ===== FOOTER ===== */
 .footer {
-  margin-top: auto;              /* 👈 THIS pushes it down */
-  padding-top: 40px;
-
-  text-align: center;
+  font-weight: 600;
+  margin-top: 40px;
+  margin-bottom: 20px;
   font-size: 1.5rem;
+  text-align: center;
   color: rgba(255, 255, 255, 0.6);
-
   user-select: none;
+
+  /* 👇 load animation */
+  opacity: 0;
+  transform: translateX(-12px);
+  animation: footerSlideIn 0.5s ease forwards;
+  animation-delay: 0.6s; /* comes after list */
 }
+
 .my-name {
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  font-weight: 500;
 }
 
 .my-name:hover {
@@ -253,56 +248,64 @@ body,
   color: #ffffff;
 }
 
-/* animations */
+/* ===== ANIMATIONS ===== */
 @keyframes promptFadeIn {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 @keyframes inputFadeIn {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
 @keyframes buttonPopIn {
   to {
     opacity: 1;
   }
 }
 
-/* ===== MOBILE RESPONSIVENESS ===== */
+@keyframes footerSlideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes todoFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
 @media (max-width: 768px) {
   .container {
-    padding-top: 100px;   /* less vertical waste */
-    padding-bottom: 80px;
+    padding-top: 100px;
+    padding-bottom: 120px;
   }
 
   .card {
-    width: 90%;           /* responsive card */
+    width: 90%;
     padding: 24px 20px;
   }
 
   .prompt {
-    font-size: 32px;      /* readable, not huge */
+    font-size: 32px;
   }
 
   .input-row {
-    flex-direction: column; /* stack input + button */
+    flex-direction: column;
     gap: 10px;
   }
 
-  .input-row input {
-    width: 100%;          /* full width on mobile */
-  }
-
+  .input-row input,
   .input-row button {
     width: 100%;
-  }
-
-  .footer {
-    font-size: 12px;      /* slightly smaller */
-    margin-top: 24px;
   }
 }

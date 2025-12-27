@@ -42,74 +42,82 @@ function App() {
   };
 
   return (
-    <div className="container" style={{
-        backgroundImage: `
-          linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-          url(${bgImage})
-        `,
-      }}>
-      
-      <div className="card">
-        <p className="prompt">What’s on your mind today?</p>
+    <>
+      <div
+        className="bg-layer"
+        style={{ backgroundImage: `url(${bgImage})` }}
+      />
 
-        <div className="input-row">
-          <input
-            type="text"
-            placeholder="Enter a new task"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
+        <div className="app-shell">
+          <div className="container" style={{
+            backgroundImage: `
+              linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+              url(${bgImage})
+            `,
+          }}>
+          
+          <div className="card">
+            <p className="prompt">What’s on your mind today?</p>
 
-          <button onClick={addTodo}>+ Add</button>
-        </div>
+            <div className="input-row">
+              <input
+                type="text"
+                placeholder="Enter a new task"
+                value={text}
+                onChange={(e) => setText(e.target.value)}
+              />
 
-        <ul className="todo-list">
-          {todos.map((todo, index) => (
-            <li
-              key={index}
-              className={`todo-item ${todo.completed ? "completed" : ""}`}
+              <button onClick={addTodo}>+ Add</button>
+            </div>
+
+            <ul className="todo-list">
+              {todos.map((todo, index) => (
+                <li
+                  key={index}
+                  className={`todo-item ${todo.completed ? "completed" : ""}`}
+                >
+                  <label className="todo-checkbox">
+                    <input
+                      type="checkbox"
+                      checked={todo.completed}
+                      onChange={() => {
+                        const updatedTodos = [...todos];
+                        updatedTodos[index].completed = !updatedTodos[index].completed;
+                        setTodos(updatedTodos);
+                      }}
+                    />
+
+                    <span className="checkmark"></span>
+                  </label>
+
+                  <span className="todo-text">{todo.text}</span>
+
+                  <button
+                    className="delete-btn"
+                    onClick={() => deleteTodo(index)}
+                  >
+                    ❌
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <footer className="footer">
+            © 2025{" "}
+            <a
+              className="my-name"
+              href="https://github.com/SourinMajumdar"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <label className="todo-checkbox">
-                <input
-                  type="checkbox"
-                  checked={todo.completed}
-                  onChange={() => {
-                    const updatedTodos = [...todos];
-                    updatedTodos[index].completed = !updatedTodos[index].completed;
-                    setTodos(updatedTodos);
-                  }}
-                />
-
-                <span className="checkmark"></span>
-              </label>
-
-              <span className="todo-text">{todo.text}</span>
-
-              <button
-                className="delete-btn"
-                onClick={() => deleteTodo(index)}
-              >
-                ❌
-              </button>
-            </li>
-          ))}
-        </ul>
+              Sourin Majumdar
+            </a>
+            . Built with ❤️ and React.
+          </footer>
+        </div>
       </div>
-
-      <footer className="footer">
-        © 2025{" "}
-        <a
-          className="my-name"
-          href="https://github.com/SourinMajumdar"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Sourin Majumdar
-        </a>
-        . Built with ❤️ and React.
-      </footer>
-
-    </div>
+    </>
   );
 }
 
