@@ -2,11 +2,10 @@ import { useState, useEffect } from "react";
 import "./App.css";
 
 const backgrounds = [
-    "public/img1.jpg", "public/img2.jpg",
-    "public/img3.jpg", "public/img4.jpg",
-    "public/img5.jpg", "public/img6.jpg",
+    "/bg/img1.jpg", "/bg/img2.jpg",
+    "/bg/img3.jpg", "/bg/img4.jpg",
+    "/bg/img5.jpg", "/bg/img6.jpg",
 ];
-
 
 function App() {
   const [todos, setTodos] = useState(() => {
@@ -25,7 +24,6 @@ function App() {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
-
   const [text, setText] = useState("");
 
   const addTodo = () => {
@@ -39,15 +37,11 @@ function App() {
     setText("");
   };
 
-
   const deleteTodo = (indexToDelete) => {
     setTodos(todos.filter((_, index) => index !== indexToDelete));
   };
 
-
-
   return (
-    
     <div className="container" style={{
         backgroundImage: `
           linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
@@ -101,9 +95,22 @@ function App() {
           ))}
         </ul>
       </div>
+
+      <footer className="footer">
+        © 2025{" "}
+        <a
+          className="my-name"
+          href="https://github.com/SourinMajumdar"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Sourin Majumdar
+        </a>
+        . Built with ❤️ and React.
+      </footer>
+
     </div>
   );
-
 }
 
 export default App;
