@@ -342,6 +342,12 @@ body, #root {
     font-size: 32px;
   }
 
+  .todo-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+
   .input-row {
     flex-direction: column;
     gap: 10px;
